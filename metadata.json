@@ -1,0 +1,8 @@
+{
+  "name": "Mahfuz bd asia",
+  "description": "This application was made by Mahfuz bd asia. A full-stack WhatsApp marketing tool for bulk messaging, contact verification, and lead management.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}

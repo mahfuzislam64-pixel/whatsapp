@@ -1,0 +1,179 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    background-color: #0b141a !important;
+    color: #e9edef !important;
+  }
+}
+
+/* Force dark mode styles on WhatsApp specific tailwind classes */
+.bg-\[\#F0F2F5\] {
+  background-color: #0b141a !important;
+}
+
+.bg-white {
+  background-color: #111b21 !important;
+}
+
+.text-\[\#111B21\] {
+  color: #e9edef !important;
+}
+
+.border-\[\#D1D7DB\] {
+  border-color: #222e35 !important;
+}
+
+.border-r {
+  border-color: #222e35 !important;
+}
+
+.border-b {
+  border-color: #222e35 !important;
+}
+
+.border-t {
+  border-color: #222e35 !important;
+}
+
+/* Text gray overrides */
+.text-gray-900 {
+  color: #e9edef !important;
+}
+.text-gray-800 {
+  color: #e9edef !important;
+}
+.text-gray-700 {
+  color: #d1d7db !important;
+}
+.text-gray-600 {
+  color: #8696a0 !important;
+}
+.text-gray-500 {
+  color: #8696a0 !important;
+}
+.text-gray-400 {
+  color: #667781 !important;
+}
+
+/* Input elements styling */
+input[type="text"], 
+input[type="number"], 
+textarea {
+  background-color: #202c33 !important;
+  color: #e9edef !important;
+  border-color: #222e35 !important;
+}
+input::placeholder, 
+textarea::placeholder {
+  color: #667781 !important;
+}
+
+/* Hover effects */
+.hover\:bg-gray-50:hover {
+  background-color: #202c33 !important;
+}
+.hover\:bg-green-50:hover {
+  background-color: #202c33 !important;
+}
+.hover\:bg-red-50:hover {
+  background-color: #3b2024 !important;
+}
+.hover\:bg-red-100:hover {
+  background-color: #4a1d24 !important;
+}
+
+/* Table header & list containers */
+.bg-gray-50 {
+  background-color: #202c33 !important;
+}
+.bg-gray-100 {
+  background-color: #202c33 !important;
+}
+
+/* Modal backgrounds */
+.bg-white.rounded-2xl {
+  background-color: #222e35 !important;
+}
+
+/* Green formatting guide banner & samples */
+.bg-\[\#E8FBF0\] {
+  background-color: #0c3327 !important;
+  border-color: #0f513d !important;
+}
+.text-green-800 {
+  color: #4ade80 !important;
+}
+.text-green-700 {
+  color: #4ade80 !important;
+}
+.text-green-600 {
+  color: #4ade80 !important;
+}
+.border-green-200 {
+  border-color: #0f513d !important;
+}
+.border-green-300 {
+  border-color: #0f513d !important;
+}
+.hover\:bg-green-50:hover {
+  background-color: #0f513d !important;
+}
+.bg-green-100 {
+  background-color: #0c3327 !important;
+}
+.bg-green-50 {
+  background-color: #0c3327 !important;
+  color: #4ade80 !important;
+}
+
+/* Blue info box & tip box overrides */
+.bg-blue-50 {
+  background-color: #082a3a !important;
+  color: #60a5fa !important;
+  border-color: #0c4a6e !important;
+}
+.text-blue-700 {
+  color: #60a5fa !important;
+}
+.border-blue-200 {
+  border-color: #0c4a6e !important;
+}
+.bg-blue-100 {
+  background-color: #082a3a !important;
+  color: #60a5fa !important;
+}
+
+/* Red alerts / confirm modal elements */
+.bg-red-50 {
+  background-color: #3b2024 !important;
+  color: #f87171 !important;
+  border-color: #7f1d1d !important;
+}
+.text-red-600 {
+  color: #f87171 !important;
+}
+.border-red-200 {
+  border-color: #7f1d1d !important;
+}
+.bg-red-100 {
+  background-color: #3b2024 !important;
+}
+
+/* Contact table specific overrides */
+.bg-green-50\/50 {
+  background-color: rgba(12, 51, 39, 0.4) !important;
+}
+
+/* Scrollbars custom styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #374248;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
