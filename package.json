@@ -19,7 +19,6 @@
     "csv-parser": "^3.2.0",
     "dotenv": "^17.2.3",
     "express": "^4.21.2",
-    "lightningcss-win32-x64-msvc": "^1.32.0",
     "lucide-react": "^0.546.0",
     "mongoose": "^9.2.4",
     "motion": "^12.23.24",
