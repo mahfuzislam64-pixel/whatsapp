@@ -251,6 +251,8 @@ type Stats = {
 
 type UploadMode = "file" | "manual" | "fixer";
 
+const API_BASE = (import.meta.env.VITE_API_URL || "").replace(/\/$/, "");
+
 export default function App() {
   const [activeTab, setActiveTab] = useState<
     "dashboard" | "login" | "contacts" | "upload" | "composer"
@@ -329,7 +331,7 @@ export default function App() {
 
   const fetchStatus = async () => {
     try {
-      const res = await fetch("/api/qr");
+      const res = await fetch(`${API_BASE}/api/qr`);
       const data = await res.json();
       setStatus(data.status);
       if (data.qr) setQrCode(data.qr);
@@ -341,7 +343,7 @@ export default function App() {
 
   const fetchStats = async () => {
     try {
-      const res = await fetch("/api/stats");
+      const res = await fetch(`${API_BASE}/api/stats`);
       const data = await res.json();
       setStats(data);
     } catch (err) {}
@@ -349,7 +351,7 @@ export default function App() {
 
   const fetchContacts = async () => {
     try {
-      const res = await fetch("/api/contacts");
+      const res = await fetch(`${API_BASE}/api/contacts`);
       const data = await res.json();
       setContacts(data);
     } catch (err) {}
@@ -369,7 +371,7 @@ export default function App() {
 
     setUploadStatus({ text: `Uploading "${file.name}"...`, type: "loading" });
     try {
-      const res = await fetch("/api/upload-contacts", {
+      const res = await fetch(`${API_BASE}/api/upload-contacts`, {
         method: "POST",
         body: formData,
       });
@@ -408,7 +410,7 @@ export default function App() {
     setIsAddingContact(true);
     setAddContactStatus(null);
     try {
-      const res = await fetch("/api/add-contact", {
+      const res = await fetch(`${API_BASE}/api/add-contact`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ 
@@ -594,7 +596,7 @@ export default function App() {
         return;
       }
 
-      const res = await fetch("/api/import-contacts-bulk", {
+      const res = await fetch(`${API_BASE}/api/import-contacts-bulk`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ contacts: list }),
@@ -660,7 +662,7 @@ export default function App() {
   const handleDeleteContact = async (id: string, phone: string) => {
     setDeletingId(id);
     try {
-      await fetch(`/api/contacts/${id}`, { method: "DELETE" });
+      await fetch(`${API_BASE}/api/contacts/${id}`, { method: "DELETE" });
       setContacts((prev) => prev.filter((c) => c._id !== id));
       setSelectedContacts((prev) => prev.filter((p) => p !== phone));
       fetchStats();
@@ -672,7 +674,7 @@ export default function App() {
   const startVerification = async () => {
     setIsVerifying(true);
     try {
-      await fetch("/api/verify-contacts", { method: "POST" });
+      await fetch(`${API_BASE}/api/verify-contacts`, { method: "POST" });
       alert("Verification started in background. Please wait a few minutes then refresh.");
     } catch {
       alert("Failed to start verification");
@@ -686,7 +688,7 @@ export default function App() {
     if (selectedContacts.length === 0) return alert("Select at least one contact");
     setIsSending(true);
     try {
-      const res = await fetch("/api/send-message", {
+      const res = await fetch(`${API_BASE}/api/send-message`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message, phoneNumbers: selectedContacts, delaySeconds }),
@@ -705,7 +707,7 @@ export default function App() {
     setShowLogoutConfirm(false);
     setIsLoggingOut(true);
     try {
-      await fetch("/api/logout", { method: "POST" });
+      await fetch(`${API_BASE}/api/logout`, { method: "POST" });
       setContacts([]);
       setStats({ total: 0, verified: 0 });
       setSelectedContacts([]);
@@ -732,7 +734,7 @@ export default function App() {
     setQrCode(null);
     setStatus("connecting");
     try {
-      await fetch("/api/restart", { method: "POST" });
+      await fetch(`${API_BASE}/api/restart`, { method: "POST" });
       // Poll aggressively for new QR after restart
       setTimeout(fetchStatus, 2000);
       setTimeout(fetchStatus, 5000);
@@ -785,7 +787,7 @@ export default function App() {
     setIsSavingEdit(true);
     setEditStatus(null);
     try {
-      const res = await fetch(`/api/contacts/${editingContact._id}`, {
+      const res = await fetch(`${API_BASE}/api/contacts/${editingContact._id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
